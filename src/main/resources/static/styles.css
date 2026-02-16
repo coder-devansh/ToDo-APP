@@ -1,0 +1,404 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Serif:wght@500&display=swap");
+
+:root {
+    --bg: #f6f4ef;
+    --surface: #fffdf9;
+    --ink: #1f2430;
+    --muted: #5f6778;
+    --primary: #d95d39;
+    --accent: #278f84;
+    --line: #dfd9ce;
+    --ok: #1f8f52;
+    --danger: #bb2f36;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Space Grotesk", "Avenir Next", "Segoe UI", sans-serif;
+    background: radial-gradient(circle at 20% 20%, #efe3d0, transparent 35%),
+        radial-gradient(circle at 85% 15%, #d8f0ea, transparent 40%),
+        var(--bg);
+    color: var(--ink);
+}
+
+.bg-orb {
+    position: fixed;
+    z-index: -1;
+    border-radius: 999px;
+    filter: blur(40px);
+    opacity: 0.6;
+}
+
+.orb-a {
+    width: 260px;
+    height: 260px;
+    background: #ffd4a8;
+    top: -60px;
+    right: -60px;
+}
+
+.orb-b {
+    width: 280px;
+    height: 280px;
+    background: #b5ddd6;
+    bottom: -80px;
+    left: -80px;
+}
+
+.shell {
+    width: min(1020px, 92vw);
+    margin: 28px auto 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.card {
+    background: color-mix(in srgb, var(--surface) 90%, white 10%);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 20px;
+    box-shadow: 0 14px 38px rgba(38, 38, 44, 0.08);
+}
+
+.brand h1 {
+    margin: 10px 0 8px;
+    font-family: "IBM Plex Serif", Georgia, serif;
+    font-size: clamp(1.8rem, 3vw, 2.35rem);
+    line-height: 1.15;
+}
+
+.eyebrow {
+    margin: 0;
+    font-size: 0.8rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.muted {
+    margin: 0;
+    color: var(--muted);
+}
+
+.stats {
+    margin-top: 20px;
+    display: flex;
+    gap: 12px;
+}
+
+.stats div {
+    flex: 1;
+    padding: 14px;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+    background: #fff;
+}
+
+.stats strong {
+    display: block;
+    font-size: 1.6rem;
+    color: var(--primary);
+}
+
+.tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+.tab {
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: #f8f5ee;
+    padding: 10px 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.tab.active {
+    background: #fff;
+    border-color: var(--ink);
+}
+
+.panel {
+    display: none;
+}
+
+.panel.active {
+    display: block;
+}
+
+label {
+    display: block;
+    margin: 10px 0 6px;
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
+input,
+textarea {
+    width: 100%;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 10px 12px;
+    font: inherit;
+    background: #fff;
+}
+
+.password-field {
+    position: relative;
+}
+
+.password-field input {
+    padding-right: 70px;
+}
+
+.toggle-pass {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: #fff;
+    padding: 6px 8px;
+    line-height: 0;
+    cursor: pointer;
+}
+
+.toggle-pass .icon {
+    width: 18px;
+    height: 18px;
+    fill: var(--muted);
+    display: block;
+}
+
+.toggle-pass .eye-off {
+    display: none;
+}
+
+.toggle-pass.is-visible .eye {
+    display: none;
+}
+
+.toggle-pass.is-visible .eye-off {
+    display: block;
+}
+
+.toggle-pass:focus {
+    outline: 2px solid color-mix(in srgb, var(--accent) 60%, white 40%);
+    outline-offset: 2px;
+}
+
+textarea {
+    min-height: 92px;
+    resize: vertical;
+}
+
+.btn {
+    margin-top: 14px;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 14px;
+    font: inherit;
+    cursor: pointer;
+}
+
+.btn.primary {
+    background: var(--primary);
+    color: white;
+    width: 100%;
+}
+
+.btn.accent {
+    background: var(--accent);
+    color: white;
+}
+
+.btn.ghost {
+    border: 1px solid var(--line);
+    background: #fff;
+}
+
+.btn.mini {
+    margin-top: 0;
+    padding: 7px 11px;
+    font-size: 0.84rem;
+}
+
+.message {
+    min-height: 20px;
+    margin: 10px 0 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.toast-stack {
+    position: fixed;
+    right: 18px;
+    top: 18px;
+    display: grid;
+    gap: 10px;
+    z-index: 10;
+}
+
+.toast {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--accent);
+    border-radius: 12px;
+    padding: 12px 14px;
+    min-width: 220px;
+    box-shadow: 0 12px 28px rgba(20, 20, 28, 0.12);
+    animation: toast-in 240ms ease both;
+}
+
+.toast.ok {
+    border-left-color: var(--ok);
+}
+
+.toast.error {
+    border-left-color: var(--danger);
+}
+
+@keyframes toast-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.todo-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
+
+.todo-head h2 {
+    margin: 0;
+}
+
+.todo-form {
+    margin-top: 14px;
+}
+
+.filters {
+    margin-top: 14px;
+    display: flex;
+    gap: 8px;
+}
+
+.chip {
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 7px 12px;
+    background: #fff;
+    cursor: pointer;
+}
+
+.chip.active {
+    border-color: var(--ink);
+    background: #f8f5ee;
+}
+
+.todo-list {
+    margin: 14px 0 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 10px;
+}
+
+.todo-item {
+    padding: 12px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.todo-title {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.todo-desc {
+    margin: 6px 0 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+    white-space: pre-wrap;
+}
+
+.todo-item.done .todo-title {
+    text-decoration: line-through;
+    color: var(--muted);
+}
+
+.todo-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.hidden {
+    display: none;
+}
+
+.rise {
+    animation: rise 520ms ease both;
+}
+
+.delay-1 {
+    animation-delay: 100ms;
+}
+
+.delay-2 {
+    animation-delay: 180ms;
+}
+
+.pop {
+    animation: pop 300ms ease both;
+}
+
+@keyframes rise {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pop {
+    from {
+        opacity: 0;
+        transform: scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@media (max-width: 900px) {
+    .shell {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="bg-gradient"></div>
+<div class="bg-grid"></div>
+
+<main class="container">
+    <header class="header rise">
+        <div class="logo">
+            <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 11l3 3L22 4"/>
+                <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
+            </svg>
+            <span class="logo-text">TaskFlow</span>
+        </div>
+        <div class="stats-bar">
+            <div class="stat">
+                <span class="stat-value" id="doneCount">0</span>
+                <span class="stat-label">Completed</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat">
+                <span class="stat-value" id="openCount">0</span>
+                <span class="stat-label">Pending</span>
+            </div>
+        </div>
+    </header>
+
+    <section class="auth-section card rise delay-1" id="authCard">
+        <div class="auth-header">
+            <h1>Welcome Back</h1>
+            <p class="subtitle">Sign in to manage your tasks efficiently</p>
+        </div>
+
+        <div class="tabs">
+            <button id="loginTab" class="tab active" type="button">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3"/>
+                </svg>
+                Sign In
+            </button>
+            <button id="registerTab" class="tab" type="button">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+                    <circle cx="8.5" cy="7" r="4"/>
+                    <line x1="20" y1="8" x2="20" y2="14"/>
+                    <line x1="23" y1="11" x2="17" y2="11"/>
+                </svg>
+                Register
+            </button>
+        </div>
+
+        <form id="loginForm" class="panel active">
+            <div class="input-group">
+                <label for="loginIdentity">Username or Email</label>
+                <div class="input-wrapper">
+                    <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+                        <circle cx="12" cy="7" r="4"/>
+                    </svg>
+                    <input id="loginIdentity" name="usernameOrEmail" required placeholder="Enter your username or email">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="loginPassword">Password</label>
+                <div class="password-field">
+                    <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                        <path d="M7 11V7a5 5 0 0110 0v4"/>
+                    </svg>
+                    <input id="loginPassword" name="password" type="password" required placeholder="Enter your password">
+                    <button class="toggle-pass" type="button" data-target="loginPassword" aria-label="Show password">
+                        <svg class="icon eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                            <circle cx="12" cy="12" r="3"/>
+                        </svg>
+                        <svg class="icon eye-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/>
+                            <line x1="1" y1="1" x2="23" y2="23"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <button class="btn primary" type="submit">
+                <span>Sign In</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="5" y1="12" x2="19" y2="12"/>
+                    <polyline points="12 5 19 12 12 19"/>
+                </svg>
+            </button>
+        </form>
+
+        <form id="registerForm" class="panel">
+            <div class="input-group">
+                <label for="registerUsername">Username</label>
+                <div class="input-wrapper">
+                    <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+                        <circle cx="12" cy="7" r="4"/>
+                    </svg>
+                    <input id="registerUsername" name="username" required minlength="3" maxlength="50" placeholder="Choose a username">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="registerEmail">Email Address</label>
+                <div class="input-wrapper">
+                    <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                        <polyline points="22,6 12,13 2,6"/>
+                    </svg>
+                    <input id="registerEmail" name="email" type="email" required placeholder="you@example.com">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="registerPassword">Password</label>
+                <div class="password-field">
+                    <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                        <path d="M7 11V7a5 5 0 0110 0v4"/>
+                    </svg>
+                    <input id="registerPassword" name="password" type="password" required minlength="6" placeholder="Min. 6 characters">
+                    <button class="toggle-pass" type="button" data-target="registerPassword" aria-label="Show password">
+                        <svg class="icon eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                            <circle cx="12" cy="12" r="3"/>
+                        </svg>
+                        <svg class="icon eye-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/>
+                            <line x1="1" y1="1" x2="23" y2="23"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <button class="btn primary" type="submit">
+                <span>Create Account</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="5" y1="12" x2="19" y2="12"/>
+                    <polyline points="12 5 19 12 12 19"/>
+                </svg>
+            </button>
+        </form>
+
+        <p class="message" id="authMessage"></p>
+    </section>
+
+    <section class="todos-section card rise delay-2 hidden" id="todoCard">
+        <div class="todo-header">
+            <div class="todo-title-area">
+                <h2 id="welcomeText">Your Tasks</h2>
+                <p class="subtitle">Stay organized, stay productive</p>
+            </div>
+            <button class="btn logout" id="logoutBtn" type="button">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/>
+                </svg>
+                <span>Logout</span>
+            </button>
+        </div>
+
+        <form id="todoForm" class="todo-form">
+            <div class="form-row">
+                <div class="input-wrapper task-input">
+                    <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="12" y1="5" x2="12" y2="19"/>
+                        <line x1="5" y1="12" x2="19" y2="12"/>
+                    </svg>
+                    <input id="todoTitle" required maxlength="150" placeholder="What needs to be done?">
+                </div>
+            </div>
+            <div class="form-row">
+                <textarea id="todoDescription" maxlength="1000" placeholder="Add some details (optional)..."></textarea>
+            </div>
+            <button class="btn accent" type="submit">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="12" y1="5" x2="12" y2="19"/>
+                    <line x1="5" y1="12" x2="19" y2="12"/>
+                </svg>
+                <span>Add Task</span>
+            </button>
+        </form>
+
+        <div class="filters">
+            <button class="chip active" data-filter="all" type="button">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="7" height="7"/>
+                    <rect x="14" y="3" width="7" height="7"/>
+                    <rect x="14" y="14" width="7" height="7"/>
+                    <rect x="3" y="14" width="7" height="7"/>
+                </svg>
+                All
+            </button>
+            <button class="chip" data-filter="open" type="button">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <polyline points="12 6 12 12 16 14"/>
+                </svg>
+                Pending
+            </button>
+            <button class="chip" data-filter="done" type="button">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+                    <polyline points="22 4 12 14.01 9 11.01"/>
+                </svg>
+                Completed
+            </button>
+        </div>
+
+        <ul class="todo-list" id="todoList"></ul>
+        <p class="message" id="todoMessage"></p>
+    </section>
+</main>
+
+<template id="todoItemTemplate">
+    <li class="todo-item pop">
+        <div class="todo-checkbox">
+            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                <polyline points="20 6 9 17 4 12"/>
+            </svg>
+        </div>
+        <div class="todo-main">
+            <h3 class="todo-title"></h3>
+            <p class="todo-desc"></p>
+        </div>
+        <div class="todo-actions">
+            <button class="btn mini toggle-btn" type="button"></button>
+            <button class="btn mini danger delete-btn" type="button">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="3 6 5 6 21 6"/>
+                    <path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/>
+                </svg>
+            </button>
+        </div>
+    </li>
+</template>
+
+<div class="toast-stack" id="toastStack" aria-live="polite" aria-atomic="true"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
